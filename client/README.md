@@ -1,16 +1,90 @@
-# React + Vite
+# 🔐 Secure File Sharing System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack secure file sharing application inspired by Google Drive, built using the **MERN stack**.  
+This system allows users to upload files, securely share them with controlled access, and generate expirable share links with strict authorization rules.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Live Demo
 
-## React Compiler
+### Frontend (Vercel)
+👉 https://secure-file-sharing-system-2mh1.vercel.app/
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Backend (Node.js + Express)
+👉 https://secure-file-sharing-system-11wu.vercel.app/
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠 Tech Stack
+
+### Frontend
+- React.js (Vite)
+- Axios
+- Modern CSS (Glassmorphism UI, animations)
+- Responsive Design
+
+### Backend
+- Node.js
+- Express.js
+- MongoDB (Mongoose)
+- Multer (file uploads)
+- Crypto (secure token generation)
+
+---
+
+## ✨ Key Features
+
+### 📤 File Upload
+- Upload files securely (PDF, Images, CSV)
+- File type & size validation (max 10MB)
+- Metadata stored in MongoDB:
+  - Filename
+  - Type
+  - Size
+  - Upload date
+  - Owner
+
+---
+
+### 🔗 Secure File Sharing
+- Generate secure shareable links
+- Token-based access (unguessable)
+- Share links support **expiry time**
+- Only authorized users can access files
+
+---
+
+### 🔒 Access Control & Security (Core Highlight)
+- Authorization middleware implemented
+- Access allowed only if:
+  - User is **owner**, OR
+  - User has explicit permission, OR
+  - Valid, non-expired share link is used
+- Direct URL access without permission is blocked
+- Expired links automatically revoke access
+
+> This logic ensures production-level security similar to real-world systems.
+
+---
+
+### 🎨 Premium UI/UX
+- Glassmorphism card design
+- Smooth animations (CSS keyframes)
+- Auto-filled file IDs after upload
+- Seamless end-to-end flow without manual DB interaction
+- Fully responsive layout
+
+---
+
+## 🧠 Application Flow
+
+1. User uploads a file
+2. File ID is auto-displayed in UI
+3. User generates a secure share link
+4. Share link can be accessed until expiry
+5. Unauthorized access is denied at backend level
+
+---
+
+## 📂 Project Structure
+

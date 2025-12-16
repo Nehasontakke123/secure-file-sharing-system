@@ -20,7 +20,7 @@ const fileFilter = (req, file, cb) => {
 // ✅ Multer configuration (Vercel compatible)
 // Files are stored in memory (RAM), not disk
 export const upload = multer({
-  storage: multer.memoryStorage(), // 🔥 IMPORTANT FIX
+  storage: multer.memoryStorage(), // IMPORTANT FIX
   limits: {
     fileSize: 10 * 1024 * 1024, // 10 MB limit
   },

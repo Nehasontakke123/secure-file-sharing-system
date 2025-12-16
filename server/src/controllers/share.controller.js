@@ -21,7 +21,7 @@ export const generateShareLink = async (req, res) => {
     });
 
     res.status(201).json({
-      shareLink: `http://localhost:5000/api/files/shared/${token}`,
+      shareLink: `${process.env.BASE_URL}/api/files/shared/${token}`,
       expiresAt,
     });
   } catch (error) {

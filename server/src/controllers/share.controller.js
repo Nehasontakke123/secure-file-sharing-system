@@ -20,11 +20,15 @@ export const generateShareLink = async (req, res) => {
       expiresAt,
     });
 
+    // ✅ FINAL FIX (NO process.env.BASE_URL)
+    const baseUrl = `${req.protocol}://${req.get("host")}`;
+
     res.status(201).json({
-      shareLink: `${process.env.BASE_URL}/api/files/shared/${token}`,
+      shareLink: `${baseUrl}/api/files/shared/${token}`,
       expiresAt,
     });
   } catch (error) {
+    console.error(error);
     res.status(500).json({ message: "Failed to generate link" });
   }
 };

@@ -1,6 +1,6 @@
 import multer from "multer";
 
-// Allowed file types
+// ✅ Allowed file types (Security)
 const allowedTypes = [
   "application/pdf",
   "image/jpeg",
@@ -8,26 +8,19 @@ const allowedTypes = [
   "text/csv",
 ];
 
-// Configure storage
-const storage = multer.diskStorage({
-  destination: "src/uploads/",
-  filename: (req, file, cb) => {
-    cb(null, `${Date.now()}-${file.originalname}`);
-  },
-});
-
-// Validate file type
+// ✅ File type validation
 const fileFilter = (req, file, cb) => {
   if (allowedTypes.includes(file.mimetype)) {
     cb(null, true);
   } else {
-    cb(new Error("Invalid file type"), false);
+    cb(new Error("Invalid file type. Only PDF, Images, CSV allowed"), false);
   }
 };
 
-// Multer instance
+// ✅ Multer configuration (Vercel compatible)
+// Files are stored in memory (RAM), not disk
 export const upload = multer({
-  storage,
+  storage: multer.memoryStorage(), // 🔥 IMPORTANT FIX
   limits: {
     fileSize: 10 * 1024 * 1024, // 10 MB limit
   },

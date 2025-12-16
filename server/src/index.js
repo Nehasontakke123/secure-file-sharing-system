@@ -12,7 +12,7 @@ const app = express();
 // ✅ CORS configuration (FIXED)
 app.use(
   cors({
-    origin: "http://localhost:5173", // Vite frontend
+    origin: "https://secure-file-sharing-system-2mh1.vercel.app/", // Vite frontend
     credentials: true,
   })
 );
